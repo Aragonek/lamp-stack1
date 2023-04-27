@@ -23,11 +23,6 @@ n
 EOF
 
 yum install php php-mysqlnd php-json php-gd php-mbstring -y
-systemctl restart httpd
-firewall-cmd --add-service=http --permanent
-firewall-cmd --add-service=https --permanent
-firewall-cmd --add-port=80/tcp --permanent
-firewall-cmd --add-port=3306/tcp --permanent
 
 cat << EOF > /etc/yum.repos.d/webmin.repo
 [Webmin]
@@ -42,4 +37,11 @@ dnf install webmin -y
 
 systemctl start webmin
 systemctl enable webmin
+
+systemctl restart httpd
+firewall-cmd --add-service=http --permanent
+firewall-cmd --add-service=https --permanent
+firewall-cmd --add-port=80/tcp --permanent
+firewall-cmd --add-port=3306/tcp --permanent
 firewall-cmd --add-port=10000/tcp --permanent
+firewall-cmd --add-port=443/tcp --permanent
