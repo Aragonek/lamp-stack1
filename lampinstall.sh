@@ -39,3 +39,7 @@ EOF
 
 dnf update -y
 dnf install webmin -y
+
+systemctl start webmin
+systemctl enable webmin
+firewall-cmd --add-port=10000/tcp --permanent
