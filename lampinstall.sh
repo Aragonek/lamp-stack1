@@ -12,6 +12,7 @@ systemctl start mariadb
 systemctl enable mariadb
 
 mysql_secure_installation <<EOF
+
 y
 Kode1234!
 Kode1234!
