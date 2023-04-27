@@ -29,6 +29,13 @@ firewall-cmd --add-service=https --permanent
 firewall-cmd --add-port=80/tcp --permanent
 firewall-cmd --add-port=3306/tcp --permanent
 
-dnf module enable php:remi-7.4
-dnf --enablerepo=remi install phpMyAdmin
-yum install phpmyadmin
+cat << EOF > /etc/yum.repos.d/webmin.repo
+[Webmin]
+name=Webmin  
+mirrorlist=https://download.webmin.com/download/yum/mirrorlist
+enabled=1
+gpgkey=http://www.webmin.com/jcameron-key.asc
+EOF
+
+dnf update -y
+dnf install webmin -y
