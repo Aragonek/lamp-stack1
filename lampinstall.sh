@@ -56,4 +56,5 @@ firewall-cmd --add-port=443/tcp --permanent
 firewall-cmd --add-port=20-21/tcp --permanent
 firewall-cmd --add-port=30000-31000/tcp --permanent
 firewall-cmd --add-port=587/tcp --permanent
+semanage port -a -t http_port_t -p tcp 80
 systemctl restart firewalld
