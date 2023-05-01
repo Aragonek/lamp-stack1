@@ -1,13 +1,13 @@
 #!/bin/bash
 
-yum update -y
-yum install epel-release
+dnf update -y
+dnf install epel-release
 
-yum install httpd -y
+dnf install httpd -y
 systemctl start httpd
 systemctl enable httpd
 
-yum install mariadb-server mariadb -y
+dnf install mariadb-server mariadb -y
 
 systemctl start mariadb
 systemctl enable mariadb
@@ -23,7 +23,7 @@ n
 n
 EOF
 
-yum install php php-mysqlnd php-json php-gd php-mbstring -y
+dnf install php php-mysqlnd php-json php-gd php-mbstring -y
 
 cat << EOF > /etc/yum.repos.d/webmin.repo
 [Webmin]
@@ -55,4 +55,5 @@ firewall-cmd --add-port=10000/tcp --permanent
 firewall-cmd --add-port=443/tcp --permanent
 firewall-cmd --add-port=20-21/tcp --permanent
 firewall-cmd --add-port=30000-31000/tcp --permanent
+firewall-cmd --add-port=587/tcp --permanent
 systemctl restart firewalld
