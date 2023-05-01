@@ -1,7 +1,9 @@
 #!/bin/bash
 
 dnf update -y
+
 dnf install epel-release
+dnf install -y https://rpms.remirepo.net/enterprise/remi-release-8.rpm
 
 dnf install httpd -y
 systemctl start httpd
@@ -38,6 +40,9 @@ dnf install webmin -y
 
 systemctl start webmin
 systemctl enable webmin
+
+dnf module enable php:remi-7.4
+dnf --enablerepo=remi install phpMyAdmin -y
 
 systemctl restart httpd
 
