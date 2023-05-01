@@ -47,8 +47,6 @@ rpm -qi vsftpd
 systemctl start vsftpd
 systemctl enable vsftpd 
 
-firewall-cmd --add-service=http --permanent
-firewall-cmd --add-service=https --permanent
 firewall-cmd --add-port=80/tcp --permanent
 firewall-cmd --add-port=3306/tcp --permanent
 firewall-cmd --add-port=10000/tcp --permanent
